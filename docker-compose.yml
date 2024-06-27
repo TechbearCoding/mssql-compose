@@ -3,7 +3,7 @@ version: '3.3'
 services:
   mssql:
     container_name: sql-server
-    image: mcr.microsoft.com/mssql/server:2019-latest
+    image: mcr.microsoft.com/mssql/server:2017-latest
     restart: always
     environment:
       ACCEPT_EULA: "Y"
@@ -11,7 +11,6 @@ services:
     ports:
       - 1433:1433
     volumes:
-      - my-volume:/var/opt/mssql
-      
-volumes:
-  my-volume:
+      - /var/opt/mssql/data:/var/opt/mssql/data
+      - /var/opt/mssql/log:/var/opt/mssql/log
+      - /var/opt/mssql/secrets:/var/opt/mssql/secrets
